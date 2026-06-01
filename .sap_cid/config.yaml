@@ -7,22 +7,22 @@ service:
   buildToolVersion: "MBTJ11N20"
 
 stages:
-  Build:
+  build:
     mavenExecuteStaticCodeChecks: false
     npmExecuteLint: false
     karmaExecuteTests: false
 
-  Additional Unit Tests:
+  additionalUnitTests:
     karmaExecuteTests: false
     npmExecuteScripts: false
 
-  Malware Scan:
+  malwareScan:
     enabled: true
 
-  Acceptance:
+  acceptance:
     cloudFoundryDeploy: false
 
-  Release:
+  release:
     cloudFoundryDeploy: true
     cfApiEndpoint: "https://api.cf.eu10.hana.ondemand.com"
     cfOrg: "<YOUR_CF_ORG>"
