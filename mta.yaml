@@ -30,7 +30,6 @@ modules:
     requires:
       - name: cap_mbis_cicd-db
       - name: cap_mbis_cicd-auth
-      - name: cap_mbis_cicd-destination
     provides:
       - name: srv-api
         properties:
@@ -136,13 +135,6 @@ resources:
         HTML5Runtime_enabled: true
         version: 1.0.0
         destinations:
-          - Name: APD300
-            Description: S/4HANA Backend APD300
-            Type: HTTP
-            Authentication: BasicAuthentication
-            ProxyType: OnPremise
-            URL: http://apd300
-            HTML5.DynamicDestination: true
           - Name: cap_mbis_cicd-srv-api
             Description: CAP Backend Service
             Type: HTTP
