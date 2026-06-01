@@ -8,10 +8,6 @@ stages:
     buildTool: "mta"
     buildToolVersion: "MBTJ11N20"
 
-  additionalUnitTests:
-    karmaExecuteTests: false
-    npmExecuteScripts: false
-
   malwareScan:
     scan: true
 
