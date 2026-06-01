@@ -1,0 +1,28 @@
+general:
+  buildTool: "mta"
+  mtaSourcePath: "."
+  mtaBuildTool: "cloudMbt"
+
+service:
+  buildToolVersion: "MBTJ11N20"
+
+stages:
+  Build:
+    mavenExecuteStaticCodeChecks: false
+    npmExecuteLint: false
+
+  Additional Unit Tests:
+    karmaExecuteTests: false
+    npmExecuteScripts: false
+
+  Acceptance:
+    cloudFoundryDeploy: false
+
+  Release:
+    cloudFoundryDeploy: true
+    cfApiEndpoint: "https://api.cf.eu10.hana.ondemand.com"
+    cfOrg: "<YOUR_CF_ORG>"
+    cfSpace: "<YOUR_CF_SPACE>"
+    cfAppName: "cap_mbis_cicd-srv"
+    deployTool: "mtaDeployPlugin"
+    mtaDeployParameters: "-f --version-rule ALL"

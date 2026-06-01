@@ -1,0 +1,35 @@
+{
+  "meta": { "creator": "CDS Compiler", "flavor": "xtended" },
+  "definitions": {
+    "API_EQUIPMENT": {
+      "kind": "service"
+    },
+    "API_EQUIPMENT.A_Equipment": {
+      "kind": "entity",
+      "elements": {
+        "Equipment":            { "key": true, "type": "cds.String", "length": 18 },
+        "EquipmentName":        { "type": "cds.String", "length": 40 },
+        "EquipmentCategory":    { "type": "cds.String", "length": 1 },
+        "TechnicalObjectType":  { "type": "cds.String", "length": 10 },
+        "SuperiorEquipment":    { "type": "cds.String", "length": 18 },
+        "FunctionalLocation":   { "type": "cds.String", "length": 40 },
+        "MaintenancePlant":     { "type": "cds.String", "length": 4 },
+        "CompanyCode":          { "type": "cds.String", "length": 4 },
+        "CostCenter":           { "type": "cds.String", "length": 10 },
+        "CreationDate":         { "type": "cds.Date" },
+        "LastChangeDate":       { "type": "cds.Date" },
+        "ValidityStartDate":    { "type": "cds.Date" },
+        "ValidityEndDate":      { "type": "cds.Date" }
+      }
+    },
+    "API_EQUIPMENT.A_EquipCharacteristic": {
+      "kind": "entity",
+      "elements": {
+        "Equipment":        { "key": true, "type": "cds.String", "length": 18 },
+        "CharcInternalID":  { "key": true, "type": "cds.String", "length": 10 },
+        "Characteristic":   { "type": "cds.String", "length": 30 },
+        "CharacteristicValue": { "type": "cds.String", "length": 70 }
+      }
+    }
+  }
+}

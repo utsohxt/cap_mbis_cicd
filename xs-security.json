@@ -1,0 +1,27 @@
+{
+  "xsappname": "cap-mbis-cicd",
+  "tenant-mode": "dedicated",
+  "description": "Security configuration for cap_mbis_cicd",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.EquipmentRead",
+      "description": "Read equipment data"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "EquipmentViewer",
+      "description": "View equipment data",
+      "scope-references": ["$XSAPPNAME.EquipmentRead"]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "Equipment Viewer",
+      "description": "Can view equipment data",
+      "role-template-references": [
+        "$XSAPPNAME.EquipmentViewer"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "cap.mbis.cicd.equipment",
+    "type": "application",
+    "title": "Equipment List",
+    "description": "Equipment List powered by API_EQUIPMENT",
+    "applicationVersion": { "version": "1.0.0" },
+    "dataSources": {
+      "mainService": {
+        "uri": "../../equipment/",
+        "type": "OData",
+        "settings": { "odataVersion": "4.0" }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://machine"
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fiori": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "settings": { "synchronizationMode": "None", "operationMode": "Server", "autoExpandSelect": true }
+      },
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": { "bundleName": "cap.mbis.cicd.equipment.i18n.i18n" }
+      }
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "EquipmentList",
+          "target": "EquipmentList"
+        },
+        {
+          "pattern": "Equipment({key}):?query:",
+          "name": "EquipmentObjectPage",
+          "target": "EquipmentObjectPage"
+        }
+      ],
+      "targets": {
+        "EquipmentList": {
+          "type": "Component",
+          "id": "EquipmentList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Equipment",
+              "variantManagement": "Page",
+              "initialLoad": true,
+              "navigationSettings": {
+                "detail": { "route": "EquipmentObjectPage" }
+              }
+            }
+          }
+        },
+        "EquipmentObjectPage": {
+          "type": "Component",
+          "id": "EquipmentObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Equipment",
+              "navigationSettings": {
+                "EquipmentCharacteristic": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "name": "cap_mbis_cicd",
+  "version": "1.0.0",
+  "description": "CAP MBIS CI/CD Equipment App",
+  "repository": "https://github.com/utsohxt/cap_mbis_cicd",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "^3.x",
+    "@sap/cds": "^8",
+    "@sap/cds-dk": "^8",
+    "@sap/xssec": "^3",
+    "express": "^4",
+    "passport": "^0"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/ux-specification": "latest"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch": "cds watch",
+    "build": "cds build --production",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "cds": {
+    "requires": {
+      "API_EQUIPMENT": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_EQUIPMENT",
+        "[production]": {
+          "credentials": {
+            "destination": "APD300",
+            "path": "/sap/opu/odata/sap/API_EQUIPMENT_SRV"
+          }
+        }
+      },
+      "db": {
+        "kind": "sqlite",
+        "[production]": {
+          "kind": "hana-cloud"
+        }
+      },
+      "auth": {
+        "kind": "xsuaa",
+        "[development]": {
+          "kind": "dummy"
+        }
+      }
+    },
+    "features": {
+      "fetch_csrf": true
+    }
+  }
+}
