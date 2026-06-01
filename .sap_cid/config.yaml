@@ -17,7 +17,4 @@ stages:
 
   acceptance: {}
 
-  release:
-    cfApiEndpoint: "https://api.cf.eu10.hana.ondemand.com"
-    cfOrg: "<YOUR_CF_ORG>"
-    cfSpace: "<YOUR_CF_SPACE>"
+  release: {}
