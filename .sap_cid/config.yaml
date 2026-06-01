@@ -3,29 +3,21 @@ general:
   mtaBuildTool: "cloudMbt"
   mtaSourcePath: "."
 
-service:
-  buildToolVersion: "MBTJ11N20"
-
 stages:
   build:
-    mavenExecuteStaticCodeChecks: false
-    npmExecuteLint: false
-    karmaExecuteTests: false
+    buildTool: "mta"
+    buildToolVersion: "MBTJ11N20"
 
   additionalUnitTests:
     karmaExecuteTests: false
     npmExecuteScripts: false
 
   malwareScan:
-    enabled: true
+    scan: true
 
-  acceptance:
-    cloudFoundryDeploy: false
+  acceptance: {}
 
   release:
-    cloudFoundryDeploy: true
     cfApiEndpoint: "https://api.cf.eu10.hana.ondemand.com"
     cfOrg: "<YOUR_CF_ORG>"
     cfSpace: "<YOUR_CF_SPACE>"
-    deployTool: "mtaDeployPlugin"
-    mtaDeployParameters: "-f --version-rule ALL"
